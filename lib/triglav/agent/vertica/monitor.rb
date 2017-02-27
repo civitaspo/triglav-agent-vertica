@@ -62,6 +62,9 @@ module Triglav::Agent
         update_status_file(:periodic_last_epoch, new_periodic_last_epoch) if new_periodic_last_epoch
         update_status_file(:singular_last_epoch, new_singular_last_epoch) if new_singular_last_epoch
         true
+
+      ensure
+        connection.close
       end
 
       def get_periodic_events

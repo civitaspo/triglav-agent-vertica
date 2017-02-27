@@ -15,6 +15,11 @@ module Triglav::Agent
         connection.query(sql)
       end
 
+      def close
+        @connection.close rescue nil if @connection
+        @connection = nil
+      end
+
       private
 
       def connection
